@@ -1,0 +1,15 @@
+<header class="ems-header">
+  
+  <!-- Navbar -->
+  <div class="topnav" id="myTopnav">
+      <a [routerLink]="['/home']">Home</a>
+      <a [routerLink]="['/ems_dashboard']">Events</a>
+      <a [routerLink]="['/employee']">Employee</a>  
+      <a [routerLink]="['/home']" class="logo_section"><img class="img-fluid" src="assets/logo.png" alt="logo"></a>
+      <a [routerLink]="['/attendance']">Attendance</a>
+      <a [routerLink]="['/profile']">Profile</a>
+      <a [routerLink] = "['/login', {logout: true}]" (click)="onLogoutClick()">Log Out</a>
+  </div>
+  <!-- Navbar END -->
+  
+</header>

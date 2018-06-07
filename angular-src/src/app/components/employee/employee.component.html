@@ -1,0 +1,110 @@
+<app-ems-header></app-ems-header>
+<div class="container-fluid" align="center" style="clear: both; padding: 5px; min-height: 700px; display: inline-flex;">
+  <div class="employee-middle">
+    <div class="row" style="padding-bottom: 20px">
+      <div class="col-sm-12" style="padding: 10px">
+        <flash-messages></flash-messages>
+      </div>
+      <div class="form-group col-lg-6 col-md-6">
+        <h3>Employee Catalog</h3>
+      </div>
+      <div class="form-group col-lg-6 col-md-6" style="padding-top: 20px;">
+        <label class="control-label col-sm-4" style="padding-top: 5px;">Employee Search:</label>
+        <div class="col-sm-8">
+          <div class="input-group">
+            <input class="form-control" [(ngModel)]="searchItem" (ngModelChange)="onSelectString($event)"
+                   placeholder="Search by Name or Email">
+            <div class="input-group-addon" ><i class="fa fa-search"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-5 col-md-5">
+        <label class="control-label col-sm-5" style="padding-top: 5px;">Choose Category:</label>
+        <div class="col-sm-7">
+          <select class="form-control" [(ngModel)]="category" (ngModelChange)="onSelectCategory($event)"
+                  name="product">
+            <option value="all">All Category</option>
+            <option value="category1">category1</option>
+            <option value="category2">category2</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group col-lg-5 col-md-5">
+        <label class="control-label col-sm-5" style="padding-top: 5px;">Choose Status:</label>
+        <div class="col-sm-7">
+          <select class="form-control" [(ngModel)]="status" (ngModelChange)="onSelectStatus($event)"
+                  name="product">
+            <option value="all">All Status</option>
+            <option value="status1">status1</option>
+            <option value="status2">status2</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group col-lg-2 col-md-2">
+        <div class="form-group">
+          <button class="btn btn-default" [routerLink]="['/new_employee']" style="float: right;">
+            Add Employee
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <table class="table users_table">
+          <thead color="Black">
+          <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Email</th>
+            <th>Weekly Hours</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let employee of employees; let i = index">
+            <td>{{employee.employeeID}}</td>
+            <td>{{employee.firstname}} {{employee.lasttname}}</td>
+            <td>{{employee.category}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.WorkHoursPerWeek}}</td>
+            <td>
+              <a [routerLink]="['/edit_employee', employee._id]">
+                <i class="fa fa-pencil"></i>
+              </a>
+            </td>
+            <td>
+              <a (click)="onDelete(employee)">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div style="border: 2px solid transparent; border-color:darkgreen" class="employee-right">
+    <!--<h4>Upcoming Events</h4>-->
+    <div class="table-responsive" >
+      <table class="table table-condensed" style="width: auto;">
+        <thead>
+        <tr>
+          <th>Upcoming Events</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--<tr *ngFor="let event of upcomingevents">-->
+          <!--<td>-->
+            <!--<a (click)="onUpdate(event)">-->
+              <!--<i class="fa fa-calendar"></i> <span> {{event.eventname}} </span>-->
+            <!--</a>-->
+          <!--</td>-->
+        <!--</tr>-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

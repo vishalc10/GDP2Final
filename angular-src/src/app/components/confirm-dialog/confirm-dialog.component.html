@@ -1,0 +1,16 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="onCancel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!--<i class="fa fa-trash"></i>-->
+    <span>{{str_data}}</span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary btn-sm btn-right" (click)="onSubmit()"><i class="fa fa-check"></i>  Yes</button>
+    <button type="button" class="btn btn-primary btn-sm btn-right" (click)="onCancel()"><i class="fa fa-close"></i>  No</button>
+  </div>
+</div>

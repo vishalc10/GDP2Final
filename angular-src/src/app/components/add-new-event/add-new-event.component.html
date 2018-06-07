@@ -1,0 +1,128 @@
+<div class="row">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add New Event</h4>
+        <button type="button" class="close" aria-label="Close" (click)="onCancel()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <form class="form-horizontal"  #form="ngForm" (ngSubmit)="onSubmit()">
+      <!-- Event Name -->
+      <div class="form-group">
+        <label class="control-label col-sm-3">Event Name</label>
+        <div class="col-sm-9">
+          <input type="text" placeholder="Event Name" name="name" class="form-control" [(ngModel)]="newevent.eventname" required>
+        </div>
+      </div>
+      <!-- All Day -->
+      <div class="form-group">
+        <label class="control-label col-sm-3">All Day</label>
+        <div class="col-sm-9">
+          <label class="radio-inline"><input type="radio" [(ngModel)]="newevent.alldayF"
+                                             name="allDaystaus" [value]=true>Yes</label>
+          <label class="radio-inline"><input type="radio" [(ngModel)]="newevent.alldayF"
+                                             name="allDaystaus" [value]=false>No</label>
+        </div>
+      </div>
+      <!-- Start Date -->
+      <div class="form-group">
+        <label class="control-label col-sm-3">Start Date</label>
+        <div class="col-sm-9">
+          <input type="date" placeholder="Start Date" name="startdate" class="form-control" [(ngModel)]="newevent.startdate" required>
+        </div>
+      </div>
+      <!-- End Date -->
+      <div class="form-group">
+        <label class="control-label col-sm-3">End Date</label>
+        <div class="col-sm-9">
+          <input type="date" placeholder="End Date" name="enddate" class="form-control" [(ngModel)]="newevent.enddate" required>
+        </div>
+      </div>
+      <!-- Start Time -->
+      <div class="form-group" *ngIf="!newevent.alldayF">
+        <label class="control-label col-sm-3">Start Time</label>
+        <div class="col-sm-9">
+          <!--<input type="time" name="starttime" placeholder="Start Time" class="form-control" [(ngModel)]="starttime" (change)="onSelectStartTime()" required>-->
+          <select class="form-control" [(ngModel)]="newevent.starttime" name="starttime" (change)="onSelectStartTime()" required>
+            <option>12:00 AM</option>
+            <option>12:30 AM</option>
+            <option>1:00 AM</option>
+            <option>1:30 AM</option>
+            <option>2:00 AM</option>
+            <option>2:30 AM</option>
+            <option>3:00 AM</option>
+            <option>3:30 AM</option>
+            <option>4:00 AM</option>
+            <option>4:30 AM</option>
+            <option>5:00 AM</option>
+            <option>5:30 AM</option>
+            <option>6:00 AM</option>
+            <option>6:30 AM</option>
+            <option>7:00 AM</option>
+            <option>7:30 AM</option>
+            <option>8:00 AM</option>
+            <option>8:30 AM</option>
+            <option>9:00 AM</option>
+          </select>
+        </div>
+      </div>
+      <!-- End Time -->
+      <div class="form-group" *ngIf="!newevent.alldayF">
+        <label class="control-label col-sm-3">End Time</label>
+        <div class="col-sm-9">
+          <!--<input type="time" name="endtime" placeholder="End Time" class="form-control" [(ngModel)]="endtime" (change)="onSelectEndTime()" required>-->
+          <select class="form-control" [(ngModel)]="newevent.endtime" name="endtime" (change)="onSelectEndTime()" required>
+            <option>12:00 PM</option>
+            <option>12:30 PM</option>
+            <option>1:00 PM</option>
+            <option>1:30 PM</option>
+            <option>2:00 PM</option>
+            <option>2:30 PM</option>
+            <option>3:00 PM</option>
+            <option>3:30 PM</option>
+            <option>4:00 PM</option>
+            <option>4:30 PM</option>
+            <option>5:00 PM</option>
+            <option>5:30 PM</option>
+            <option>6:00 PM</option>
+            <option>6:30 PM</option>
+            <option>7:00 PM</option>
+            <option>7:30 PM</option>
+            <option>8:00 PM</option>
+            <option>8:30 PM</option>
+            <option>9:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <!-- Event Location -->
+      <div class="form-group">
+        <label class="control-label col-sm-3">Event Location</label>
+        <div class="col-sm-9">
+          <input type="text" placeholder="Event Location" name="location" class="form-control" [(ngModel)]="newevent.location" required>
+        </div>
+      </div>
+      <!-- Event Notes -->
+      <div class="form-group">
+        <label class="control-label col-sm-3">Event Notes</label>
+        <div class="col-sm-9">
+          <textarea name="notes" class="form-control" [(ngModel)]="newevent.notes" required>
+          </textarea>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn btn-primary btn-sm btn-right" [disabled]="form.form.invalid|| form.form.pending">
+            <span>
+              Update
+            </span>
+          </button>
+          <button type="button" class="btn btn-default btn-sm btn-right" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+    </div>
+</div>

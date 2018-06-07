@@ -1,0 +1,122 @@
+<app-ems-header></app-ems-header>
+
+<div class="" style="margin-top: 12px;">
+  <div class="row">
+    <div class="row container-fluid col-md-10" style="padding-left: 50px; padding-top: 25px;">
+      <div class="col-md-12" style="padding: 10px">
+        <a [routerLink]="['/employee']"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+      </div>
+      <div class="col-sm-12" style="padding: 10px">
+        <flash-messages></flash-messages>
+      </div>
+      <div class="col-md-11 col-md-offset-1 employee-wrap" >
+        <h4>Details</h4><br>
+        <form class="form-horizontal"  #form="ngForm" (ngSubmit)="onSubmit()">
+          <div class="col-md-9">
+            <div class="form-group">
+              <label class="control-label col-sm-3">Employee ID:</label>
+              <div class="col-sm-9">
+                <input type="text" placeholder="Employee ID" name="id" class="form-control" [(ngModel)]="editemployee.employeeID" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3">Name:</label>
+              <div class="col-sm-4">
+                <input type="text" placeholder="First Name" name="firstname" class="form-control" [(ngModel)]="editemployee.firstname" required>
+              </div>
+              <div class="col-sm-4">
+                <input type="text" placeholder="Last Name" name="lastname" class="form-control" [(ngModel)]="editemployee.lasttname" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3">Email:</label>
+              <div class="col-sm-9">
+                <input type="email" name="email" class="form-control" pattern="[^@]+@[^@]+"
+                       placeholder="Email" required [(ngModel)]="editemployee.email" #email="ngModel">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3">Address:</label>
+                <div class="col-sm-4">
+                  <input type="text" placeholder="Street" name="address" class="form-control" [(ngModel)]="editemployee.street">
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" placeholder="City" name="city" class="form-control" [(ngModel)]="editemployee.city">
+                </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3"></label>
+                <div class="col-sm-4">
+                  <input type="text" placeholder="State" name="state" class="form-control" [(ngModel)]="editemployee.state">
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" placeholder="Zipcode" name="zipcode" class="form-control" [(ngModel)]="editemployee.zipcode">
+                </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3">Category:</label>
+              <div class="col-sm-9">
+                <select class="form-control" [(ngModel)]="editemployee.category" name="category">
+                  <option>Assign coordinator</option>
+                  <option>Bartender</option>
+                  <option>Maintainance</option>
+                  <option>HouseKeeping</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3">Status:</label>
+              <div class="col-sm-9">
+                <select class="form-control" [(ngModel)]="editemployee.status" name="status">
+                  <option>Present</option>
+                  <option>Absent</option>
+                  <option>Partial</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3">Phone Number:</label>
+              <div class="col-sm-4">
+                <input type="number" name="phone" class="form-control"
+                       placeholder="Phone Number" [(ngModel)]="editemployee.PhoneNumber">
+              </div>
+              <div class="col-sm-4">
+                <input type="date" placeholder="DateOfBirth" name="DateOfBirth" class="form-control" [(ngModel)]="editemployee.DateOfBirth">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3">Work Hours/Week:</label>
+              <div class="col-sm-9">
+                <input type="number" name="workhours" class="form-control"
+                       placeholder="Work Hours" [(ngModel)]="editemployee.WorkHoursPerWeek">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div style="padding: 24px" >
+              <img class="profile-icon" [src]="docURL ? docURL:'assets/profilePhoto.png'" [alt]="'Photo'"/>
+            </div>
+            <div>
+              <input type="file" id="DocInput" accept="image/*" capture="camera" (change)="selectDoc($event)" #docInput>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <div class="col-sm-offset-4 col-sm-9 div-btn-right">
+                <button type="submit" class="btn btn-primary btn-sm"
+                        [disabled]="form.form.invalid || form.form.pending">Save</button>
+                <button type="button" class="btn btn-default btn-sm" (click)="onCancel()">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+    </div>
+  <div style="border: 2px solid transparent; border-color:darkgreen;" class="col-md-2">
+    <h4>Upcoming Events</h4>
+  </div>
+  </div>
+</div>
+<footer>
+  <p>© 2012-17 City of Maryville All Rights Reserved 25055 Liberty Road, Maryville, MO 64468</p>
+</footer>

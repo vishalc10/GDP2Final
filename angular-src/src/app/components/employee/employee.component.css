@@ -1,0 +1,9 @@
+.employee-middle {
+    width: 80%;
+}
+.employee-middle .row{
+    margin: 0 !important;
+}
+.employee-right {
+    width: 20%;
+}

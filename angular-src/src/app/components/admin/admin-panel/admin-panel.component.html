@@ -1,0 +1,115 @@
+<app-header></app-header>
+<div class="admin_panel_header">
+  <div class="row">
+    <h3><font color="#A0522D"> Admin Panel </font></h3><br/><br/>
+  </div>
+
+  <div class="row">
+    <div  class="col-lg-4 col-md-4">
+        <div class="form-group row">
+          <label class="col-lg-6 col-md-6"><input type="radio" [(ngModel)] = "status" name="status" value="1" checked (click)="displayActiveUser()"> <font color="#A0522D"> Active </font> </label>
+          <label class="col-lg-6 col-md-6"><input type="radio" [(ngModel)] = "status" name="status" value="0" (click)="displayInactiveUser()"> <font color="#A0522D"> Inactive </font> </label>
+        </div>
+    </div>
+    <div class="col-lg-5 col-md-4">
+        <div class="form-group">
+
+          <label></label>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3">
+        <div class="form-group">
+          <button class="btn btn-default" [routerLink]="['/register']" style="float: right;">
+          Add User
+          </button>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
+        <div class="input-group">
+          <input class="form-control" [(ngModel)]="searchItem" (ngModelChange)="onSearchUser($event)"
+              placeholder="Search...">
+          <div class="input-group-addon" ><i class="fa fa-search"></i></div>
+        </div>
+    </div>
+    <div class="col-lg-9 col-md-9">
+        <div class="form-group">
+          <label><input type="checkbox" /> &nbsp; &nbsp; Employee Management (EM)</label> &nbsp; &nbsp;
+          <label><input type="checkbox" /> &nbsp; &nbsp; Beverage Inventory (BI) </label> &nbsp; &nbsp;
+          <label><input type="checkbox" /> &nbsp; &nbsp; Room Management (RM) </label>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-8 col-md-8">
+        <div class="form-group">
+          <label><input type="checkbox" /> &nbsp; &nbsp; Supply Management (SM)</label> &nbsp; &nbsp;
+          <label><input type="checkbox" /> &nbsp; &nbsp; Super (S) </label> &nbsp; &nbsp;
+        </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+        <table class="table users_table">
+          <thead color="Black">
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>User Name</th>
+                <th colspan="5">Permissions</th>
+                <th></th>
+              </tr>
+              <tr class="border:none">
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>EM</th>
+                <th>BI</th>
+                <th>RM</th>
+                <th>SM</th>
+                <th>S</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of users; let i = index">
+                  <td>{{user.first_name}}</td>
+                  <td>{{user.last_name}}</td>
+                  <td>{{user.username}}</td>
+                  <td><input type="checkbox" [checked]="user.em"/></td>
+                  <td><input type="checkbox" [checked]="user.bi" /></td>
+                  <td><input type="checkbox" [checked]="user.rm" /></td>
+                  <td><input type="checkbox" [checked]="user.sm" /></td>
+                  <td><input type="checkbox" [checked]="user.s" /></td>
+                  <td><button *ngIf="statusF" type="button" class="btn btn-brown" (click)="openModal(true, user.username)">Inactive</button></td>
+                  <td><button *ngIf="!statusF" type="button" class="btn btn-brown" (click)="openModal(true, user.username)">Active</button></td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="inactiveModal" role="dialog" [ngStyle]="{'display': mdlIsOpen ? 'block' : 'none', 'opacity': 1}">
+    <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+          <h4 *ngIf="statusF" class="modal-title">Inactivate User</h4>
+          <h4 *ngIf="!statusF" class="modal-title">Activate User</h4>
+          </div>
+          <div class="modal-body">
+          <p *ngIf="statusF">Are you sure you want to inactive this <span>{{modalUsername}}</span>?</p>
+          <p *ngIf="!statusF">Are you sure you want to active this <span>{{modalUsername}}</span>?</p>
+          </div>
+          <div class="modal-footer">
+          <button *ngIf="statusF" (click)="changeUserStatus(modalUsername, statusF)" type="button" data-dismiss="modal" class="btn btn-default">Yes</button>
+          <button *ngIf="!statusF" (click)="changeUserStatus(modalUsername, statusF)" type="button" data-dismiss="modal" class="btn btn-default">Yes</button>
+          &nbsp;
+          &nbsp;
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="openModal(false)">No</button>
+          </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.employee-wrap {
+    margin-left: 20px;
+    border: 1px solid transparent; border-color: rgba(13, 9, 4, 0.7);
+}
+.profile-icon{
+    padding: 0;
+    width: 130px;
+    min-width: 130px;
+    height: 130px;
+    line-height: 100px;
+    margin: 0 8px 0 0;
+    border-radius: 2%;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    color: #449FDB;
+    z-index: 50;
+    box-shadow: 0 3px 1px -2px rgba(20, 27, 20, 0.82), 0 2px 2px 0 rgba(2, 5, 23, 0.92), 0 1px 5px 0 rgba(0,0,0,.12);
+}

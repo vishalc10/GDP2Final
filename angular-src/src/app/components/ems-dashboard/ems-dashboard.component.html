@@ -1,0 +1,85 @@
+<app-ems-header></app-ems-header>
+<div class="container-fluid" align="center">
+    <div class="col-sm-12">
+        <flash-messages></flash-messages>
+    </div>
+    <div class="row" style="clear: both; padding: 5px; min-height: 500px">
+        <div class="ems-event-left">
+            <br>
+            <h3 [routerLink]="['/new_event']" style="cursor: pointer">+ New Event</h3>
+            <!--<h4><button  class="btn btn-default" (click)="addnewEvent()">+ New Event</button></h4>-->
+        </div>
+        <div class="ems-event-medium">
+            <div class="form-group">
+                <div class="input-group" style="width: 70%">
+                    <input class="form-control" [(ngModel)]="searchItem" (ngModelChange)="onSearchEvents($event)"
+                           placeholder="Search...">
+                    <div class="input-group-addon" ><i class="fa fa-search"></i></div>
+                </div>
+            </div>
+            <div *ngIf="calendarOptions && !showresult">
+                <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
+                                 (eventResize)="updateEvent($event.detail)"
+                                 (dayClick)="dayEvent($event.detail)"></ng-fullcalendar>
+            </div>
+            <div class="table-responsive" *ngIf="showresult">
+                <div  *ngIf="eventdatas.length > 0">
+                    <table class="table table-condensed" style="width: auto;">
+                        <tbody>
+                        <tr *ngFor="let event of eventdatas">
+                            <td>
+                                <i class="fa fa-calendar"></i> <span> {{event.eventname}} </span>
+                            </td>
+                            <td>
+                                <!--<a [routerLink]="['/new_event', {eventid: event._id}]">-->
+                                    <!--<i class="fa fa-pencil"></i>-->
+                                <!--</a>-->
+                                <a (click)="onUpdate(event)">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a (click)="onDelete(event)">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div  *ngIf="eventdatas.length < 1">
+                    <span>No Events Found</span>
+                </div>
+            </div>
+        </div>
+        <div style="border: 2px solid transparent; border-color:darkgreen" class="ems-event-right">
+            <!--<h4>Upcoming Events</h4>-->
+            <div class="table-responsive" >
+                <table class="table table-condensed" style="width: auto;">
+                    <thead>
+                    <tr>
+                        <th>Upcoming Events</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let event of upcomingevents">
+                        <td>
+                            <a (click)="onUpdate(event)">
+                                <i class="fa fa-calendar"></i> <span> {{event.eventname}} </span>
+                            </a>
+                        </td>
+                        <!--<td>-->
+                            <!--<a (click)="onDelete(event)">-->
+                                <!--<i class="fa fa-trash-o"></i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>© 2012-17 City of Maryville All Rights Reserved 25055 Liberty Road, Maryville, MO 64468</p>
+</footer>
