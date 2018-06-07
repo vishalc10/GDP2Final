@@ -1,5 +1,4 @@
 # Employee-Management-System
-(Mean Stack development)
 Mongodb v3.6.4
 Express
 Angular
