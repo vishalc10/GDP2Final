@@ -1,8 +1,8 @@
-# Employee-Management-System
-Mongodb v3.6.4
-Express
-Angular
-Node v9.10.1
+# Employee Management System (Mozingo Lake Recreation Park)
++Mongodb v3.6.4
++Express
++Angular
++Node v9.10.1
 
 How to install this website on your local environment?
 
