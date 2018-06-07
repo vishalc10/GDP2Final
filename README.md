@@ -14,25 +14,25 @@ step2: you can simply install angular-cli by using this command, "npm install -g
 step3: You need to install mongodb and 3t application which is GUI for mongodb
       (If you do not know how to install mongodb, then you can download and install msi file from "https://www.mongodb.com/download-center?_ga=2.128617615.2069823477.1526475894-1648796818.1526344068#community")
       You can customize db path when you install mongodb on your computer.
-      (ex. E:\Workstation\MEAN\Projects\MozingoDB)
+      (ex. E:\Workstation\Projects\MozingoDB)
       
 step4: From now on, we can have a look at how this website works on local environment and I will tell you how to excute it.
-  (let`s imagine that you download this zip source file on the path, "E:\Workstation\MEAN\Projects")
+  (let`s imagine that you download this zip source file on the path, "E:\Workstation\Projects")
   1. open cmd window(1st) and follow these commands for conecting db
      E:
-     cd E:\Workstation\MEAN\Projects\MozingoDB\bin
-     mongodb --dbpath "E:\Workstation\MEAN\Projects\MozingoDB"
+     cd E:\Workstation\Projects\MozingoDB\bin
+     mongodb --dbpath "E:\Workstation\Projects\MozingoDB"
      
   2. open another cmd window(2nd) and follow these commands for nodejs excution
      E:
-     cd E:\Workstation\MEAN\Projects\mozingo
+     cd E:\Workstation\Projects\mozingo
      npm install
      npm install nodemon
      nodemon
      (As a result, you can see some sentences on cmd window which shows db connection successfully)
   3. open another cmd window(3rd) and follow these commands for angualr excution
      E:
-     cd E:\Workstation\MEAN\Projects\mozingo\angular-src
+     cd E:\Workstation\Projects\mozingo\angular-src
      npm install
      ng serve
      
